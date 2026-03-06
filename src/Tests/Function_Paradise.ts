@@ -1,3 +1,5 @@
+import { error } from "node:console"
+
 type Suits = 'D'|'S'|'H'|'C'
 type Tens = 'T'|'Q'|'J'|'K'
 type Joker = 'RED' | 'BLACK'
@@ -20,20 +22,35 @@ const SCORE: Record<string,Number> = {
 
 }
 
-function createDeck(decks: number=1, ramdomize:boolean=false): Card[] {
+export function createDeck(decks: number=1,Jacks: number|[number,number] = 0, ramdomize:boolean=false): Card[] {
     const Deck: Card[] = []
+    const Stack: Card[] = []
     for (const st of Suite){
         for (const rk of Rank){
             Deck.push({kind:"NORMAL",rank:rk,suit:st})
         }
     }
-    Deck.push({kind:"JOKER",color:"BLACK"})
-    Deck.push({kind:"JOKER",color:"RED"})
+
+
+    if (typeof Jacks === "number"){
+        for (let i=0;i<Jacks;++i){
+            Stack.push({kind:"JOKER",color:"BLACK"})
+            Stack.push({kind:"JOKER",color:"RED"})
+        }
+    } else if (Array.isArray(Jacks) && Jacks.length===2){
+        for (let i=0;i<Jacks[0];++i){
+            Stack.push({kind:"JOKER",color:"BLACK"})
+        }
+        for (let i=0;i<Jacks[1];++i){
+            Stack.push({kind:"JOKER",color:"RED"})
+        }
+    } else {}
+
     
-    const Stack: Card[] = []
     for (let i=0;i<decks;++i){
         Stack.push(...Deck);
     }
+
     if (ramdomize===true){return shuffle(Stack)} else {return Stack}
 }
 
@@ -124,9 +141,6 @@ function HandAval(hand: Card[]): [number,number] | number | null{
 }
 
 // ---------------------------QA-AREA----------------------------
-let x: Card[]=[{kind:"NORMAL",rank:"A",suit:"H"},
-    {kind:"NORMAL",rank:"5",suit:"D"},
-    {kind:"NORMAL",rank:"4",suit:"C"},
-    {kind:"NORMAL",rank:"A",suit:"C"}
-]
-console.log(HandAval(x))
+let x: Card[]= createDeck(2,[0,5]);
+
+console.log(x)

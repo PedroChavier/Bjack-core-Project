@@ -1,6 +1,3 @@
-look.md
-tsconfig.json
 .env
 node_modules/
 dist/
-package-lock.json

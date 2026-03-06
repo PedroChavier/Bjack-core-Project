@@ -2,14 +2,14 @@
   "name": "bjack-core",
   "version": "1.0.0",
   "description": "",
-  "main": "./src/server.js",
+  "main": "./dist/server.js",
   "directories": {
     "test": "Tests"
   },
   "scripts": {
     "build": "tsc",
     "debug": "tsx watch src/Tests/Function_Paradise.ts",
-    "dev": "tsx src/server.ts",
+    "dev": "npm run new && tsx src/server.ts",
     "new": "node ./toolkit/new.ts",
     "rst": "node ./toolkit/setup.js",
     "start": "npm run rst && npm run new"

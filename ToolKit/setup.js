@@ -4,7 +4,6 @@ import path from 'path'
 import { fileURLToPath } from 'url'
 
 const __filename = fileURLToPath(import.meta.url)
-const __dirname = path.dirname(__filename)
 
 const projectPath = process.cwd()
 const nodeModulesPath = path.join(projectPath, 'node_modules')
