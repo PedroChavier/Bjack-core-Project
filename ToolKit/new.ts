@@ -4,11 +4,12 @@ import path from 'path';
 
 const projectPath = process.cwd();
 const distPath = path.join(projectPath, 'dist');
+import chalk from 'chalk';
 
 async function run() {
     try {
         await rm(distPath, { recursive: true, force: true });
-        console.log('Pasta dist removida com sucesso.');
+        console.log(chalk.green('Pasta dist removida com sucesso.'))
 
         const child = spawn('npm', ['run', 'build'], {
             cwd: projectPath,

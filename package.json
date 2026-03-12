@@ -9,10 +9,15 @@
   "scripts": {
     "build": "tsc",
     "debug": "tsx watch src/Tests/Function_Paradise.ts",
-    "dev": "npm run new && tsx src/server.ts",
+    "dev": "npm run start && tsx src/server.ts",
     "new": "node ./toolkit/new.ts",
     "rst": "node ./toolkit/setup.js",
-    "start": "npm run rst && npm run new"
+    "start": "npm run rst && npm run new",
+    
+    "migration:generate": "typeorm-ts-node-esm migration:generate src/migrations/$npm_config_name -d src/config/data-source.ts",
+    "migration:run": "typeorm-ts-node-esm migration:run -d src/config/data-source.ts",
+    "migration:revert": "typeorm-ts-node-esm migration:revert -d src/config/data-source.ts",
+    "migration:show": "typeorm-ts-node-esm migration:show -d src/config/data-source.ts"
   },
   "keywords": [],
   "author": "",
@@ -22,7 +27,10 @@
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.6",
     "@types/node": "^25.3.0",
+    "chalk": "^5.6.2",
     "nodemon": "^3.1.14",
+    "npm": "^11.11.0",
+    "ts-node": "^10.9.2",
     "tsx": "^4.21.0",
     "typescript": "^5.9.3"
   },

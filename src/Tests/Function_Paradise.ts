@@ -31,6 +31,9 @@ export function createDeck(decks: number=1,Jacks: number|[number,number] = 0, ra
         }
     }
 
+    for (let i=0;i<decks;++i){
+        Stack.push(...Deck);
+    }
 
     if (typeof Jacks === "number"){
         for (let i=0;i<Jacks;++i){
@@ -46,10 +49,6 @@ export function createDeck(decks: number=1,Jacks: number|[number,number] = 0, ra
         }
     } else {}
 
-    
-    for (let i=0;i<decks;++i){
-        Stack.push(...Deck);
-    }
 
     if (ramdomize===true){return shuffle(Stack)} else {return Stack}
 }
@@ -141,6 +140,16 @@ function HandAval(hand: Card[]): [number,number] | number | null{
 }
 
 // ---------------------------QA-AREA----------------------------
-let x: Card[]= createDeck(2,[0,5]);
+const a:number=6
+const b: number|[number,number]=[3,2]
+let x: Card[]= createDeck(a,b,true);
 
-console.log(x)
+let ct: number =0
+x.forEach(element => {
+    ct++
+    if (element.kind==="NORMAL"){
+        console.log(`${ct} ${element.rank}${element.suit}`)
+    }else{
+        console.log(`${ct} joker-${element.color}`)
+    }
+});

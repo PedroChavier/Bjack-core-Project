@@ -1,9 +1,7 @@
-import { spawn } from 'child_process'
-import { rm } from 'fs/promises'
-import path from 'path'
-import { fileURLToPath } from 'url'
-
-const __filename = fileURLToPath(import.meta.url)
+import { spawn } from 'child_process';
+import { rm } from 'fs/promises';
+import path from 'path';
+//import chalk from "chalk";
 
 const projectPath = process.cwd()
 const nodeModulesPath = path.join(projectPath, 'node_modules')
@@ -11,13 +9,13 @@ const lockFilePath = path.join(projectPath, 'package-lock.json')
 
 async function run() {
     try {
-        console.log('Removendo node_modules...')
+       // console.log(chalk.red('Removendo node_modules...'))
         await rm(nodeModulesPath, { recursive: true, force: true })
-
-        console.log('Removendo package-lock.json...')
+        
+        //console.log(chalk.red('Removendo package-lock.json...'))
         await rm(lockFilePath, { force: true })
 
-        console.log('Instalando dependências...')
+        //console.log(chalk.green('Instalando dependências...'))
 
         const child = spawn('npm', ['install'], {
             cwd: projectPath,
