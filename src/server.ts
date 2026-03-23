@@ -6,20 +6,18 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const PORT = Number(process.env.PORT) || 3000;
+const PORT = Number(process.env.PORT) || 3033;
 app.use(cors())
 
-// AppDataSource.initialize()
-//   .then(() => {
-//     console.log('✅ Banco de dados conectado!');
-//     app.listen(PORT, () => {
-//       console.log(`🌐 Servidor rodando em http://localhost:${PORT}`);
-//     });
-//   })
-//   .catch((err) => {
-//     console.error('❌ Erro ao conectar ao banco:', err);
-//     process.exit(1);
-//   });
 
-    app.listen(PORT, () => { console.log(`🌐 Servidor rodando em http://localhost:${PORT}`)});
-    
+AppDataSource.initialize()
+  .then(() => {
+    console.log('✅ Banco de dados conectado!');
+    app.listen(PORT, () => {
+      console.log(`🌐 Servidor rodando em http://localhost:${PORT}`);
+    });
+  })
+  .catch((err) => {
+    console.error('❌ Erro ao conectar ao banco:', err);
+    process.exit(1);
+  });

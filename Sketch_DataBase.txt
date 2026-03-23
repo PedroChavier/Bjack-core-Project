@@ -1,0 +1,45 @@
+DROP DATABASE bjack_core_engine;
+CREATE DATABASE IF NOT EXISTS bjack_core_engine
+    CHARACTER SET utf8mb4
+    COLLATE utf8mb4_unicode_ci;
+
+USE bjack_core_engine;
+
+CREATE TABLE IF NOT EXISTS User_Info(
+    id MEDIUMINT UNSIGNED AUTO_INCREMENT,
+    Username VARCHAR(18) NOT NULL UNIQUE,
+    FullName VARCHAR(150) NOT NULL,
+    email VARCHAR(150) NOT NULL,
+    password VARCHAR(150) NOT NULL,
+    DDN DATE NOT NULL,
+    idade TINYINT UNSIGNED NOT NULL,
+    active BOOL,
+    created_at DATETIME,
+    update_at DATETIME,
+
+    PRIMARY KEY (id)
+);
+
+
+CREATE TABLE IF NOT EXISTS User_detail(
+    id MEDIUMINT UNSIGNED AUTO_INCREMENT,
+    amount_cards SMALLINT unsigned,
+
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE IF NOT EXISTS Users_Cards(
+    card_id MEDIUMINT UNSIGNED AUTO_INCREMENT,
+    id MEDIUMINT UNSIGNED,
+
+    position SMALLINT UNSIGNED UNIQUE NOT NULL,
+    kind ENUM('A','2','3','4','5','6','7','8','9','T','Q','J','K') NOT NULL ,
+    Suit ENUM('DIAMOND','SPADES','HEARTH','CLUB') NOT NULL,
+    Status Enum('DECK', 'DISCARDED', 'PLAYER_HAND', 'DEALER_HAND', 'DEALER_HOLE') NOT NULL,
+
+    PRIMARY KEY (card_id),
+    CONSTRAINT fk_identifier_user
+        FOREIGN KEY (id)
+        REFERENCES User_Info (id)
+);
+

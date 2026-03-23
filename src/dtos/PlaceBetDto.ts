@@ -1,4 +1,4 @@
-import { IsNumber, IsPositive } from 'class-validator';
+import { IsNumber, IsPositive, IsString } from 'class-validator';
 
 export class PlaceBetDto {
     @IsNumber()
@@ -8,5 +8,3 @@ export class PlaceBetDto {
     @IsString()
     currency!: string;
 }
-
-import { IsString } from 'class-validator';
