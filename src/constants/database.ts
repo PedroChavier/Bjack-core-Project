@@ -15,15 +15,13 @@ export const AppDataSource = new DataSource({
     entities:    ['src/entities/**/*.ts'],
     subscribers: [],
     migrations:  ['src/migrations/**/*.ts'],
-    migrationsRun: true,
+    migrationsRun: !(process.env.NODE_ENV === "development"),
 
-    extra: {
-        connectionLimit:    10,
-        waitForConnections: true,
-        queueLimit:         0
-    }
+    dropSchema: process.env.NODE_ENV === "development"
 })
 
 export const querryRunner = AppDataSource.createQueryRunner()
 // await querryRunner.connect()
 // await querryRunner.startTransaction()
+
+
