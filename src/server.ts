@@ -1,5 +1,5 @@
 import 'reflect-metadata'
-import { AppDataSource } from './shareds/database.js';
+import { AppDataSource } from './constants/database.js';
 import app from './index.js';
 import dotenv from 'dotenv';
 
