@@ -1,0 +1,56 @@
+{
+  "name": "bjack-core",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./dist/server.js",
+  "directories": {
+    "test": "Tests"
+  },
+  "scripts": {
+    "build": "tsc",
+    "debug": "tsx watch src/Tests/Function_Paradise.ts",
+
+    "fulldev": "npm run start && tsx src/server.ts",
+    "dev": "tsx src/server.ts",
+
+    "sqlconn": "",
+    "nosqlconn": "",
+
+    "new": "node ./toolkit/new.js",
+    "rst": "node ./toolkit/setup.js",
+    "start": "npm run rst && npm run new && cls",
+
+    "migration:create": "typeorm-ts-node-esm migration:create src/migrations/$npm_config_name -d src/config/data-source.ts",
+    "migration:generate": "typeorm-ts-node-esm migration:generate src/migrations/$npm_config_name -d src/config/data-source.ts",
+    "migration:run": "typeorm-ts-node-esm migration:run -d src/config/data-source.ts",
+    "migration:revert": "typeorm-ts-node-esm migration:revert -d src/config/data-source.ts",
+    "migration:show": "typeorm-ts-node-esm migration:show -d src/config/data-source.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/node": "^25.3.0",
+    "chalk": "^5.6.2",
+    "nodemon": "^3.1.14",
+    "npm": "^11.11.0",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.15.1",
+    "cors": "^2.8.6",
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1",
+    "express-handlebars": "^8.0.6",
+    "mongodb": "^6.21.0",
+    "mysql2": "^3.17.4",
+    "reflect-metadata": "^0.2.2",
+    "typeorm": "^0.3.28"
+  }
+}

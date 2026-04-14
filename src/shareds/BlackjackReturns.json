@@ -1,0 +1,392 @@
+{
+  "version": "1.0",
+  "lastUpdated": "2026-03-31",
+  "description": "Índice completo de retornos do Blackjack",
+  "currency": "BRL",
+  "returns": {
+    "singleHand": {
+      "BLACKJACK": {
+        "name": "Blackjack Natural",
+        "return": 1.5,
+        "description": "Ás + Carta de 10 (J, Q, K) na mão inicial",
+        "icon": "⭐⭐"
+      },
+      "WIN_21": {
+        "name": "Vitória com 21",
+        "return": 1.0,
+        "description": "Faz 21 sem blackjack natural e dealer não faz 21",
+        "icon": "✅"
+      },
+      "WIN_DEALER_BUST": {
+        "name": "Vitória por Bust do Dealer",
+        "return": 1.0,
+        "description": "Jogador ≤ 21, dealer > 21",
+        "icon": "✅"
+      },
+      "WIN_HIGHER": {
+        "name": "Vitória por Valor Superior",
+        "return": 1.0,
+        "description": "Jogador > Dealer, ambos ≤ 21",
+        "icon": "✅"
+      },
+      "PUSH": {
+        "name": "Empate (Push)",
+        "return": 0.0,
+        "description": "Mesmo valor entre jogador e dealer",
+        "icon": "➖"
+      },
+      "PUSH_BLACKJACK": {
+        "name": "Empate com Blackjack",
+        "return": 0.0,
+        "description": "Jogador e Dealer ambos com blackjack",
+        "icon": "➖"
+      },
+      "LOSS_BUST": {
+        "name": "Perda por Bust",
+        "return": -1.0,
+        "description": "Jogador estoura (> 21)",
+        "icon": "❌"
+      },
+      "LOSS_DEALER_21": {
+        "name": "Perda para 21 do Dealer",
+        "return": -1.0,
+        "description": "Dealer faz 21, jogador < 21",
+        "icon": "❌"
+      },
+      "LOSS_DEALER_HIGHER": {
+        "name": "Perda por Valor Inferior",
+        "return": -1.0,
+        "description": "Dealer > Jogador, ambos ≤ 21",
+        "icon": "❌"
+      }
+    },
+    "split": {
+      "SPLIT_2-0": {
+        "name": "Split: 2 Vitórias",
+        "return": 2.0,
+        "description": "Venceu as 2 mãos",
+        "maoResults": ["+1b", "+1b"],
+        "icon": "✅✅"
+      },
+      "SPLIT_2-1": {
+        "name": "Split: 1 Vitória, 1 Empate",
+        "return": 1.0,
+        "description": "Uma mão venceu, a outra empatou",
+        "maoResults": ["+1b", "0"],
+        "icon": "✅➖"
+      },
+      "SPLIT_2-2": {
+        "name": "Split: 2 Empates",
+        "return": 0.0,
+        "description": "Empatou ambas as mãos",
+        "maoResults": ["0", "0"],
+        "icon": "➖➖"
+      },
+      "SPLIT_1-1": {
+        "name": "Split: 1 Vitória, 1 Derrota",
+        "return": 0.0,
+        "description": "Uma mão venceu, a outra perdeu",
+        "maoResults": ["+1b", "-1b"],
+        "icon": "✅❌"
+      },
+      "SPLIT_1-2": {
+        "name": "Split: 1 Empate, 1 Derrota",
+        "return": -1.0,
+        "description": "Uma mão empatou, a outra perdeu",
+        "maoResults": ["0", "-1b"],
+        "icon": "➖❌"
+      },
+      "SPLIT_0-2": {
+        "name": "Split: 2 Derrotas",
+        "return": -2.0,
+        "description": "Perdeu ambas as mãos",
+        "maoResults": ["-1b", "-1b"],
+        "icon": "❌❌"
+      },
+      "SPLIT_BJ-0": {
+        "name": "Split: 1 Blackjack, 1 Vitória",
+        "return": 2.5,
+        "description": "Uma mão é blackjack, a outra é vitória simples",
+        "maoResults": ["+1.5b", "+1b"],
+        "icon": "⭐✅"
+      },
+      "SPLIT_BJ-1": {
+        "name": "Split: 1 Blackjack, 1 Empate",
+        "return": 1.5,
+        "description": "Uma mão é blackjack, a outra é empate",
+        "maoResults": ["+1.5b", "0"],
+        "icon": "⭐➖"
+      },
+      "SPLIT_BJ-2": {
+        "name": "Split: 1 Blackjack, 1 Derrota",
+        "return": 0.5,
+        "description": "Uma mão é blackjack, a outra é derrota",
+        "maoResults": ["+1.5b", "-1b"],
+        "icon": "⭐❌"
+      },
+      "SPLIT_BJ-BJ": {
+        "name": "Split: 2 Blackjacks",
+        "return": 3.0,
+        "description": "Ambas as mãos são blackjack",
+        "maoResults": ["+1.5b", "+1.5b"],
+        "icon": "⭐⭐"
+      }
+    },
+    "resplit": {
+      "RESPLIT_3V": {
+        "name": "Resplit: 3 Vitórias",
+        "return": 3.0,
+        "handsCount": 3,
+        "icon": "✅✅✅"
+      },
+      "RESPLIT_3P": {
+        "name": "Resplit: 3 Empates",
+        "return": 0.0,
+        "handsCount": 3,
+        "icon": "➖➖➖"
+      },
+      "RESPLIT_3L": {
+        "name": "Resplit: 3 Derrotas",
+        "return": -3.0,
+        "handsCount": 3,
+        "icon": "❌❌❌"
+      },
+      "RESPLIT_4V": {
+        "name": "Resplit: 4 Vitórias",
+        "return": 4.0,
+        "handsCount": 4,
+        "icon": "✅✅✅✅"
+      },
+      "RESPLIT_4L": {
+        "name": "Resplit: 4 Derrotas",
+        "return": -4.0,
+        "handsCount": 4,
+        "icon": "❌❌❌❌"
+      }
+    },
+    "specialMoves": {
+      "DOUBLE_WIN": {
+        "name": "Double Down: Vitória",
+        "return": 2.0,
+        "description": "Dobrou a aposta e venceu",
+        "requiredBet": "2x",
+        "icon": "⭐"
+      },
+      "DOUBLE_PUSH": {
+        "name": "Double Down: Empate",
+        "return": 0.0,
+        "description": "Dobrou a aposta e empatou",
+        "requiredBet": "2x",
+        "icon": "➖"
+      },
+      "DOUBLE_LOSS": {
+        "name": "Double Down: Derrota",
+        "return": -2.0,
+        "description": "Dobrou a aposta e perdeu",
+        "requiredBet": "2x",
+        "icon": "❌"
+      },
+      "SURRENDER": {
+        "name": "Surrender",
+        "return": -0.5,
+        "description": "Desistiu e recebeu metade da aposta",
+        "requiredBet": "1x",
+        "icon": "🏳️"
+      },
+      "INSURANCE_WIN": {
+        "name": "Insurance: Acertado",
+        "return": 1.0,
+        "description": "Dealer tinha blackjack",
+        "requiredBet": "0.5x",
+        "icon": "🛡️✅"
+      },
+      "INSURANCE_LOSS": {
+        "name": "Insurance: Errado",
+        "return": -0.5,
+        "description": "Dealer não tinha blackjack",
+        "requiredBet": "0.5x",
+        "icon": "🛡️❌"
+      }
+    },
+    "jokers": {
+      "RED_JOKER": {
+        "name": "Red Joker",
+        "return": null,
+        "description": "1 Joker Vermelho - Efeito a ser definido",
+        "status": "TODO"
+      },
+      "BLACK_JOKER": {
+        "name": "Black Joker",
+        "return": null,
+        "description": "1 Joker Preto - Efeito a ser definido",
+        "status": "TODO"
+      },
+      "DOUBLE_RED": {
+        "name": "Double Red",
+        "return": null,
+        "description": "2 Jokers Vermelhos - Efeito a ser definido",
+        "status": "TODO"
+      },
+      "DOUBLE_BLACK": {
+        "name": "Double Black",
+        "return": null,
+        "description": "2 Jokers Pretos - Efeito a ser definido",
+        "status": "TODO"
+      },
+      "RED_BLACK": {
+        "name": "Red + Black",
+        "return": null,
+        "description": "1 Vermelho + 1 Preto - Efeito a ser definido",
+        "status": "TODO"
+      }
+    }
+  },
+  "returnRanges": [
+    {
+      "min": 4.0,
+      "max": 4.0,
+      "scenario": "4 Vitórias em Resplit"
+    },
+    {
+      "min": 3.0,
+      "max": 3.0,
+      "scenario": "3 Vitórias em Resplit ou 2 Blackjacks em Split"
+    },
+    {
+      "min": 2.5,
+      "max": 2.5,
+      "scenario": "Blackjack + Vitória em Split"
+    },
+    {
+      "min": 2.0,
+      "max": 2.0,
+      "scenario": "2 Vitórias em Split ou Double Down Vitória"
+    },
+    {
+      "min": 1.5,
+      "max": 1.5,
+      "scenario": "Blackjack Natural ou Split BJ+Empate"
+    },
+    {
+      "min": 1.0,
+      "max": 1.0,
+      "scenario": "Vitória Simples ou Insurance Acertado"
+    },
+    {
+      "min": 0.5,
+      "max": 0.5,
+      "scenario": "Blackjack + Derrota em Split"
+    },
+    {
+      "min": 0.0,
+      "max": 0.0,
+      "scenario": "Empate / Push"
+    },
+    {
+      "min": -0.5,
+      "max": -0.5,
+      "scenario": "Surrender ou Insurance Errado"
+    },
+    {
+      "min": -1.0,
+      "max": -1.0,
+      "scenario": "Derrota Simples"
+    },
+    {
+      "min": -2.0,
+      "max": -2.0,
+      "scenario": "2 Derrotas em Split ou Double Down Derrota"
+    },
+    {
+      "min": -3.0,
+      "max": -3.0,
+      "scenario": "3 Derrotas em Resplit"
+    },
+    {
+      "min": -4.0,
+      "max": -4.0,
+      "scenario": "4 Derrotas em Resplit"
+    }
+  ],
+  "riskLevels": {
+    "veryHigh": {
+      "returns": [3.0, 4.0],
+      "description": "Ganho muito alto, correspondente a risco alto"
+    },
+    "high": {
+      "returns": [1.5, 2.5],
+      "description": "Ganhos bons, correspondentes a risco moderado"
+    },
+    "moderate": {
+      "returns": [0.5, 1.0],
+      "description": "Ganhos pequenos a moderados"
+    },
+    "neutral": {
+      "returns": [0.0],
+      "description": "Empate, aposta retorna"
+    },
+    "low": {
+      "returns": [-0.5, -1.0],
+      "description": "Perdas pequenas a moderadas"
+    },
+    "high_loss": {
+      "returns": [-1.5, -2.0],
+      "description": "Perdas significativas"
+    },
+    "veryHigh_loss": {
+      "returns": [-3.0, -4.0],
+      "description": "Perdas muito altas"
+    }
+  },
+  "statistics": {
+    "possibleReturnValues": 26,
+    "singleHandOutcomes": 9,
+    "splitOutcomes": 10,
+    "specialMoveOutcomes": 6,
+    "maxPositiveReturn": 4.0,
+    "maxNegativeReturn": -4.0,
+    "houseEdge": "0.5-1.0%",
+    "note": "Com estratégia básica ideal"
+  },
+  "formulas": {
+    "netReturn": "Aposta × Multiplicador",
+    "finalBalance": "Aposta + Retorno Líquido",
+    "splitReturn": "Retorno(Mão1) + Retorno(Mão2)",
+    "doubleDownReturn": "Aposta × 2 × Multiplicador"
+  },
+  "examples": {
+    "example1": {
+      "description": "Blackjack com R$100",
+      "bet": 100,
+      "outcome": "BLACKJACK",
+      "multiplier": 1.5,
+      "netReturn": 150,
+      "finalBalance": 250
+    },
+    "example2": {
+      "description": "Split 2 Vitórias com R$100",
+      "bet": 100,
+      "outcome": "SPLIT_2-0",
+      "multiplier": 2.0,
+      "netReturn": 200,
+      "finalBalance": 300
+    },
+    "example3": {
+      "description": "Double Down Vitória com R$100",
+      "bet": 100,
+      "outcome": "DOUBLE_WIN",
+      "multiplier": 2.0,
+      "netReturn": 200,
+      "finalBalance": 300,
+      "note": "Aposta dobrada para R$200, então retorno é R$200"
+    },
+    "example4": {
+      "description": "Derrota com R$100",
+      "bet": 100,
+      "outcome": "LOSS_BUST",
+      "multiplier": -1.0,
+      "netReturn": -100,
+      "finalBalance": 0
+    }
+  }
+}
